@@ -1,0 +1,80 @@
+10
+
+dir
+29
+http://desktop-22v73b9/svn/first/TSM/src/main/java/cn/kgc/tangcco/zhangyu
+http://desktop-22v73b9/svn/first
+
+
+
+2020-01-06T05:06:51.515656Z
+29
+zhangyu
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e0bb086a-4379-3547-bd43-fe39afbd65b4
+
+UtilDate.java
+file
+
+
+
+
+2019-12-26T06:03:34.344000Z
+cba99811a7fb18d51dbf916e2713a42a
+2019-12-26T06:03:03.918239Z
+16
+zhangyu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1252
+
+classroom
+dir
+
+lesson
+dir
+
+major
+dir
+
+student
+dir
+
+teacher
+dir
+
+work
+dir
+

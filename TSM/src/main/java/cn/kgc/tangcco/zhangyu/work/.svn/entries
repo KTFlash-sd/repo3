@@ -1,0 +1,40 @@
+10
+
+dir
+29
+http://desktop-22v73b9/svn/first/TSM/src/main/java/cn/kgc/tangcco/zhangyu/work
+http://desktop-22v73b9/svn/first
+
+
+
+2020-01-02T09:01:43.948743Z
+26
+zhangyu
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e0bb086a-4379-3547-bd43-fe39afbd65b4
+
+daoimp
+dir
+
+entity
+dir
+
+service
+dir
+
+servlet
+dir
+

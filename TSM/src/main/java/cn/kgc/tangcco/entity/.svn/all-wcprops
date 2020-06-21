@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/first/!svn/ver/25/TSM/src/main/java/cn/kgc/tangcco/entity
+END
+Menu.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/first/!svn/ver/11/TSM/src/main/java/cn/kgc/tangcco/entity/Menu.java
+END
+Account.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/first/!svn/ver/13/TSM/src/main/java/cn/kgc/tangcco/entity/Account.java
+END
+Student.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/first/!svn/ver/25/TSM/src/main/java/cn/kgc/tangcco/entity/Student.java
+END
+Major.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/first/!svn/ver/11/TSM/src/main/java/cn/kgc/tangcco/entity/Major.java
+END
+Lesson.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/first/!svn/ver/11/TSM/src/main/java/cn/kgc/tangcco/entity/Lesson.java
+END
+Grade.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/first/!svn/ver/23/TSM/src/main/java/cn/kgc/tangcco/entity/Grade.java
+END
+Role.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/first/!svn/ver/12/TSM/src/main/java/cn/kgc/tangcco/entity/Role.java
+END
+RoleMenu.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/first/!svn/ver/9/TSM/src/main/java/cn/kgc/tangcco/entity/RoleMenu.java
+END
+Classroom.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/first/!svn/ver/11/TSM/src/main/java/cn/kgc/tangcco/entity/Classroom.java
+END
+Teacher.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/first/!svn/ver/18/TSM/src/main/java/cn/kgc/tangcco/entity/Teacher.java
+END
+Work.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/first/!svn/ver/16/TSM/src/main/java/cn/kgc/tangcco/entity/Work.java
+END

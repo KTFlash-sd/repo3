@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+   <!-- bean标签的属性名一定要有id  class -->
+
+  
+<!--  吴昕 登录模块 
+   <bean id="adao" class="cn.kgc.tangcco.wuxin.login.dao.imp.AccountImp"></bean>
+
+   <bean id="aservice" class="cn.kgc.tangcco.wuxin.login.service.imp.AccountImp">
+       <property name="accountdao" ref="adao"></property>
+   </bean> -->
+   <!-- 张宇 学生模块 -->
+   <bean id="Sdao" class="cn.kgc.tangcco.zhangyu.student.daoimp.StudentDAOImp"></bean>
+
+   <bean id="Sservice" class="cn.kgc.tangcco.zhangyu.student.service.serviceimp.StudentServiceImp">
+       <property name="dao" ref="Sdao"></property>
+   </bean>
+   
+   <!-- 张宇 排班模块 -->
+   <bean id="Wdao" class="cn.kgc.tangcco.zhangyu.work.daoimp.WorkDAOImp"></bean>
+
+   <bean id="Wservice" class="cn.kgc.tangcco.zhangyu.work.service.serviceimp.WorkServiceImp">
+       <property name="dao" ref="Wdao"></property>
+   </bean>
+</beans>

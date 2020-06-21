@@ -1,0 +1,110 @@
+package cn.kgc.tangcco.jiawenhao.teacher.servlet;
+
+
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+
+import cn.kgc.tangcco.entity.Teacher;
+import cn.kgc.tangcco.jiawenhao.teacher.service.TeacherServiceImp;
+import cn.kgc.tangcco.util.MyServlet;
+import cn.kgc.tangcco.util.PageBean;
+import cn.kgc.tangcco.util.Utils;
+
+/**
+ * Servlet implementation class TeacherServlet
+ */
+/**
+ * 
+ * @author 贾文豪
+ *
+ */
+@WebServlet("/Tea")
+public class TeacherServlet extends MyServlet {
+	private static final long serialVersionUID = 1L;
+      TeacherServiceImp teacherservice=new TeacherServiceImp();
+      //添加教师信息
+   public void addTeacher(HttpServletRequest request, HttpServletResponse response)throws Exception {
+	   String Tname=request.getParameter("Tname");
+	   String Tsex=request.getParameter("Tsex");
+	   String Tem=request.getParameter("Tem");
+	   System.out.println(Tem);
+	   String Tbirth1=request.getParameter("Tbirth");
+	   String Tps=request.getParameter("Tps");
+	   String Tnative=request.getParameter("Tnative");
+	   String Ttel=request.getParameter("Ttel");
+	   String Tmajor=request.getParameter("Tmajor");
+	   String Tyear1=request.getParameter("Tyear");
+	   String Tiob=request.getParameter("Tiob");
+	   String Aid=request.getParameter("Aid");
+	   String Tdel1=request.getParameter("Tdel");
+	   String Tstate1=request.getParameter("Tstate");
+	   int Tdel=Integer.parseInt(Tdel1);
+	   int Tstate=Integer.parseInt(Tstate1);
+	   int Tyear=Integer.parseInt(Tyear1);
+	   Date Tbirth=Utils.StringtoDate(Tbirth1);
+	   Teacher teacher=new Teacher(1, Tname, Tsex, Tem, Tbirth, Tps, Tnative, Ttel, Tmajor, Tyear, Tiob, Aid, Tdel, Tstate);
+	   int n=teacherservice.addTeacher(teacher);
+	   response.getWriter().print(n+"");
+   }
+   //查询教师信息
+   public void queryTeacher(HttpServletRequest request, HttpServletResponse response)throws Exception{
+	   PageBean pagebean=new PageBean();
+	   String thispage=request.getParameter("thispage");
+	   String Tdel1=request.getParameter("Tdel");
+	   String Tstate1=request.getParameter("Tstate");
+	   int Tdel=Integer.parseInt(Tdel1);
+	   int Tstate=Integer.parseInt(Tstate1);
+	   List<Teacher> list=teacherservice.query(pagebean,Tdel, Tstate,thispage);
+	   String text=JSON.toJSONString(list);//把list转换为json格式
+	   JSONArray jsonarray=JSONArray.parseArray(text);//把字符串转化为JSON对象
+	   String pagetext=JSON.toJSONString(pagebean);
+	   String value="{\"pagebean\":"+pagetext+",\"rows\":"+text+"}";
+	   response.getWriter().print(value);
+	   
+   }
+   //根据ID 假删除 
+   public void delectTeacher(HttpServletRequest request, HttpServletResponse response)throws Exception{
+	   String Tid=request.getParameter("Tid");
+	   int i=teacherservice.delete(Tid);
+	   response.getWriter().print(i+"");
+   }
+   
+   //修改信息
+   public void changeTeacher(HttpServletRequest request, HttpServletResponse response)throws Exception{
+	   String Tid=request.getParameter("Tid");
+	   String Tname=request.getParameter("Tname");
+	   String Tsex=request.getParameter("Tsex");
+	   String Tem=request.getParameter("Tem");
+	   String Tbirth1=request.getParameter("Tbirth");
+	   String Tps=request.getParameter("Tps");
+	   String Tnative=request.getParameter("Tnative");
+	   String Ttel=request.getParameter("Ttel");
+	   String Tmajor=request.getParameter("Tmajor");
+	   String Tyear1=request.getParameter("Tyear");
+	   String Tiob=request.getParameter("Tiob");
+	   int Tyear=Integer.parseInt(Tyear1);
+	   Date Tbirth=Utils.StringtoDate(Tbirth1);
+	   Teacher teacher=new Teacher(-1,Tname,Tsex,Tem,Tbirth,Tps,Tnative,Ttel,Tmajor,Tyear,Tiob,"1",1,1);
+	   int n=teacherservice.changeTeacher(teacher);
+	   response.getWriter().print(n+"");
+   }
+   //模糊查询
+   public void mohuquery(HttpServletRequest request, HttpServletResponse response)throws Exception{
+	   PageBean pagebean=new PageBean();
+	   String thispage=request.getParameter("thispage");
+	   String Tname=request.getParameter("Tname");
+	   List<Teacher> list=teacherservice.findTeacher(Tname,pagebean,thispage);
+	   String text=JSON.toJSONString(list);//把list转换为json格式
+	   JSONArray jsonarray=JSONArray.parseArray(text);//把字符串转化为JSON对象
+	   String pagetext=JSON.toJSONString(pagebean);
+	   String value="{\"pagebean\":"+pagetext+",\"rows\":"+text+"}";
+	   response.getWriter().print(value);
+   }
+}

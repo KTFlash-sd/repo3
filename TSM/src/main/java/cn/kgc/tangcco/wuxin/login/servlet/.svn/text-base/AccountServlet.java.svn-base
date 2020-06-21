@@ -1,0 +1,109 @@
+package cn.kgc.tangcco.wuxin.login.servlet;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.alibaba.fastjson.JSONArray;
+
+import cn.kgc.tangcco.entity.Account;
+import cn.kgc.tangcco.entity.Role;
+import cn.kgc.tangcco.util.MyServlet;
+import cn.kgc.tangcco.util.PageBean;
+import cn.kgc.tangcco.wuxin.login.service.imp.AccountServiceImp;
+import cn.kgc.tangcco.wuxin.login.service.imp.RoleServiceImp;
+
+@WebServlet("/account.do")
+public class AccountServlet extends MyServlet{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8774020463768688475L;
+	private AccountServiceImp accountservice=new AccountServiceImp();
+	private RoleServiceImp roleservice=new RoleServiceImp();
+	 
+	//登录方法
+	protected void login(HttpServletRequest request,HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		response.setCharacterEncoding("UTF-8");
+		String username=request.getParameter("username");
+		String psd=request.getParameter("psd");
+		Account account=accountservice.islogin(username, psd);
+		if(account==null) {
+			request.setAttribute("message", "登录失败");
+			forward("/showmessage.jsp", request, response);
+		}
+		else {
+			request.getSession().setAttribute("account", account);
+			forward("/index.jsp", request, response);
+		}
+}
+
+	   //查询所有用户
+		protected void query(HttpServletRequest request,HttpServletResponse response) {
+			String thispage=request.getParameter("thispage");
+			PageBean pagebean=new PageBean();
+	
+			List<Account> accounts=accountservice.querypage(pagebean, thispage);
+			request.setAttribute("alist", accounts);
+			request.setAttribute("pagebean", pagebean);
+			forward("/account/accountlist.jsp", request, response);
+		}
+		
+		//查询所有角色
+		protected void queryrole(HttpServletRequest request,HttpServletResponse response) {
+			List<Role> rolelist=roleservice.queryRole();
+			//把集合转为jsonarray
+			String text=JSONArray.toJSONString(rolelist);
+			try {
+				response.getWriter().print(text);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		//添加用户
+		protected void add(HttpServletRequest request,HttpServletResponse response) {
+			String username=request.getParameter("username");
+			String password=request.getParameter("psd");
+			String rid=request.getParameter("Rid");
+			Account account=new Account(username,password,Integer.parseInt(rid),1);
+			String message=accountservice.addAccount(account);
+			request.setAttribute("message", message);
+			forward("/showmessage.jsp", request, response);
+		}
+		
+		//查询一个用户
+	     protected void select(HttpServletRequest request,HttpServletResponse response) {
+					String aid=request.getParameter("aid");
+					Account account=accountservice.find(Integer.parseInt(aid));
+					request.setAttribute("account", account);
+				  forward("/account/updateaccount.jsp", request, response);
+		 }
+			
+	   //修改用户
+	     protected void update(HttpServletRequest request,HttpServletResponse response) {
+	    	    String aid=request.getParameter("Aid");
+	    	    String username=request.getParameter("username");
+				String rid=request.getParameter("Rid");
+				Account account=new Account(Integer.parseInt(aid),username,Integer.parseInt(rid));
+				accountservice.updateAccount(account);
+				query(request,response);
+		 }
+	    //删除用户
+	     protected void delete(HttpServletRequest request,HttpServletResponse response) {
+				String aid=request.getParameter("Aid");
+				accountservice.fakeDelAccount(Integer.parseInt(aid));
+				query(request,response);
+	     }
+	
+}

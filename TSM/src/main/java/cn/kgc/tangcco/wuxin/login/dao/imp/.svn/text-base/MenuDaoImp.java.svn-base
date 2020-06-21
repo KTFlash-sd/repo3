@@ -1,0 +1,8 @@
+package cn.kgc.tangcco.wuxin.login.dao.imp;
+
+import cn.kgc.tangcco.entity.Menu;
+import cn.kgc.tangcco.util.JDBCUtil;
+
+public class MenuDaoImp extends JDBCUtil<Menu>{
+
+}

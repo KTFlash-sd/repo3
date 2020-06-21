@@ -1,0 +1,81 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"  isELIgnored="false"%>
+    <% String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort(); 
+   String contextpath=request.getContextPath();
+   String url=path+contextpath+"/";
+%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<base href="<%=url%>">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.4.1.js"></script>
+</head>
+<body>
+<a href="${pageContext.request.contextPath}/teacher/teacher.jsp"><input type="button" value="返回"></a><br><br><br><br>
+<table id="t" width="60%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D1DDAA" align="center" style="margin-top:8px">
+		<tr bgcolor="#E7E7E7" align="center" >
+		<td height="24" colspan="12" background="${pageContext.request.contextPath }/skin/images/newlinebg3.gif">&nbsp;教师信息&nbsp;</td>
+		</tr>
+		<tr align="center"><td><br></td></tr>
+		<tr align="center"><td>教师姓名：<input width="50" id="Tname" type="text"   required></td></tr>
+		<tr align="center"><td><br></td></tr>
+		<tr align="center"><td>性别：<input width="10 " name="Tsex" type="radio" value="男" checked >男 <input width="10 " name="Tsex" type="radio" value="女"  >女</td></tr>
+		<tr align="center"><td><br></td></tr>
+		<tr align="center"><td>邮箱：<input width="50" id="Tem" type="text" required></td></tr>
+		<tr align="center"><td><br></td></tr>
+		<tr align="center"><td>出生日期：<input width="50" id="Tbirth" type="date"   required></td></tr>
+		<tr align="center"><td><br></td></tr>
+		<tr align="center"><td>政治面貌：<input width="50" id="Tps" type="text"   required></td></tr>
+		<tr align="center"><td><br></td></tr>
+		<tr align="center"><td>籍贯：<input width="50" id="Tnative" type="text"   required></td></tr>
+		<tr align="center"><td><br></td></tr>
+		<tr align="center"><td>联系电话：<input width="50" id="Ttel" type="text"  required></td></tr>
+		<tr align="center"><td><br></td></tr>
+		<tr align="center"><td>专业id：<input width="50" id="Tmajor" type="number"   required></td></tr>
+		<tr align="center"><td><br></td></tr>
+		<tr align="center"><td>教龄：<input width="50" id="Tyear" type="text"  required></td></tr>
+		<tr align="center"><td><br></td></tr>
+		<tr align="center"><td>职称：<input width="50" id="Tiob" type="text"   required></td></tr>
+		<tr align="center"><td><br></td></tr>
+		<tr align="center"><td>
+		<input type="button" id="b" value="提交">
+		<a href="${pageContext.request.contextPath}/teacher/teacher.jsp"><input type="button" value="取消"></a>
+		<br></td></tr>
+</table>
+<script type="text/javascript">
+$(function(){
+	$("#b").click(function(){
+		var Tname=$("#Tname").val();
+		var Tbirth=$("#Tbirth").val();
+		var Tsex=$("[name=Tsex]").val();
+		var Tem=$("#Tem").val();
+		var Tps=$("#Tps").val();
+		var Tnative=$("#Tnative").val();
+		var Ttel=$("#Ttel").val();
+		var Tmajor=$("#Tmajor").val();
+		var Tyear=$("#Tyear").val();
+		var Tiob=$("#Tiob").val();
+		$.ajax({
+			 url:"${pageContext.request.contextPath}/teacher",
+			 data:{"method":"addTeacher" ,"Tname":Tname,"Tsex":Tsex,"Tem":Tem,"Tbirth":Tbirth,"Tps":Tps,"Tnative":Tnative,"Ttel":Ttel,"Tmajor":Tmajor,
+				 "Tyear":Tyear,"Tiob":Tiob},
+			 success:function(data){
+				 var i=data;
+				 if(i>0){
+					 alert("添加成功");
+					 window.self.location ="teacher/teacher.jsp";
+				 }
+				 else{
+					 alert("添加失败");
+				 }
+			 }
+		 });
+	});
+})
+
+</script>
+</body>
+</html>

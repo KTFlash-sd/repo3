@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/first/!svn/ver/19/TSM/src/main/resources
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/first/!svn/ver/16/TSM/src/main/resources/applicationContext.xml
+END
+c3p0-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/first/!svn/ver/19/TSM/src/main/resources/c3p0-config.xml
+END

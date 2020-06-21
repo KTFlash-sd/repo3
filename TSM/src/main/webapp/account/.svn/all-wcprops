@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/first/!svn/ver/13/TSM/src/main/webapp/account
+END
+accountlist.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/first/!svn/ver/13/TSM/src/main/webapp/account/accountlist.jsp
+END
+addaccount.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/first/!svn/ver/13/TSM/src/main/webapp/account/addaccount.jsp
+END
+updateaccount.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/first/!svn/ver/13/TSM/src/main/webapp/account/updateaccount.jsp
+END
